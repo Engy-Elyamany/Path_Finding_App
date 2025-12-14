@@ -1,5 +1,6 @@
 from config import *
 from Algorithms.a_star import *
+from Algorithms.bfs import *
 from Models.cell import *
 import tkinter as tk
 
@@ -16,7 +17,8 @@ class Visualizer:
         self.canvas.bind("<Button-1>", self.left_click)
         self.canvas.bind("<B1-Motion>", self.left_drag)
         self.canvas.bind("<Button-3>", self.right_click)
-        self.root.bind("<space>", self.start_algo)
+        self.root.bind("<space>", self.start_astar)  # Space للـ A*
+        self.root.bind("b", self.start_bfs)          # B للـ BFS
         self.root.bind("c", self.clear_grid)
 
     def draw_grid(self):
@@ -63,9 +65,13 @@ class Visualizer:
             cell.color = "white"
             self.draw_grid()
 
-    def start_algo(self, event):
+    def start_astar(self, event):
         if self.start and self.end:
             a_star(self.draw_grid, self.grid, self.start, self.end)
+
+    def start_bfs(self, event):
+        if self.start and self.end:
+            bfs(self.draw_grid, self.grid, self.start, self.end)
 
     def clear_grid(self, event):
         self.start = None

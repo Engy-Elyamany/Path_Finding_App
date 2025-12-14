@@ -15,3 +15,6 @@ class Cell:
 
     def make_path(self):
         self.color = "yellow"
+
+    def make_visited(self):
+        self.color = "lightblue"
