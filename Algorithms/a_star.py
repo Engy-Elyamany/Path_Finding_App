@@ -2,7 +2,7 @@ from queue import PriorityQueue
 from config import *
 from Models.cell import *
 from Models.node import *
-from Algorithms.helper import *
+from Algorithms.helper import get_neighbors
 
 # --- Heuristic for grid (Manhattan distance)
 def heuristic(cell):

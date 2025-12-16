@@ -1,5 +1,4 @@
 from config import *
-from Algorithms.a_star import *
 
 # --- Get neighbors in 4 directions
 def get_neighbors(grid, cell):
