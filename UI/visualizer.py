@@ -1,5 +1,7 @@
+from Algorithms import dfs
 from Algorithms.a_star import *
 from Algorithms.bfs import *
+from Algorithms.dfs import *
 from Models.cell import *
 from UI.status import *
 import tkinter as tk
@@ -17,8 +19,9 @@ class Visualizer:
         self.canvas.bind("<Button-1>", self.left_click)
         self.canvas.bind("<B1-Motion>", self.left_drag)
         self.canvas.bind("<Button-3>", self.right_click)
-        self.root.bind("<space>", self.start_astar)  # Space للـ A*
-        self.root.bind("b", self.start_bfs)          # B للـ BFS
+        self.root.bind("<space>", self.start_astar)  
+        self.root.bind("b", self.start_bfs)          
+        self.root.bind("d", self.start_dfs)          
         self.root.bind("c", self.clear_grid)
 
     def draw_grid(self):
@@ -81,6 +84,17 @@ class Visualizer:
             show_running_overlay(self)
             self.root.update()
             res = bfs(self.draw_grid, self.grid, self.start, self.end)
+            remove_running_overlay(self)
+            if res :
+                show_overlay_message(self,"PATH FOUND!", "green", 2000)
+            else:
+                show_overlay_message(self,"PATH NOT FOUND!", "red", 2000)
+
+    def start_dfs(self, event):
+        if self.start and self.end:
+            show_running_overlay(self)
+            self.root.update()
+            res = dfs(self.draw_grid, self.grid, self.start, self.end)
             remove_running_overlay(self)
             if res :
                 show_overlay_message(self,"PATH FOUND!", "green", 2000)
