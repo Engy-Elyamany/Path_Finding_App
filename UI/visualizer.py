@@ -73,12 +73,13 @@ class Visualizer:
         if self.start and self.end:
             show_running_overlay(self)
             self.root.update()
-            res = a_star(self.draw_grid, self.grid, self.start, self.end)
+            result = a_star(self.draw_grid, self.grid, self.start, self.end)
             remove_running_overlay(self)
-            if res :
-                show_overlay_message(self,"PATH FOUND!", "green", 2000)
+            self.results["A*"] = result
+            if result["found"]:
+                show_overlay_message(self, "PATH FOUND!", "green", 2000)
             else:
-                show_overlay_message(self,"PATH NOT FOUND!", "red", 2000)
+                show_overlay_message(self, "PATH NOT FOUND!", "red", 2000)
 
     def start_bfs(self, event):
         if self.start and self.end:
