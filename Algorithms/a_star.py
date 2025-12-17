@@ -20,7 +20,7 @@ def a_star(draw, grid, start, end):
     q = PriorityQueue()
     start_node = Node(cell=start, path=[start])
     
-    q.put((0, 0, count, start_node))  # initial h,g,count,node
+    q.put((heuristic(start),0,count,start_node))  # initial f,g,count,node
 
     while not q.empty():
         h, g, _, node = q.get()
@@ -49,7 +49,7 @@ def a_star(draw, grid, start, end):
                 neighbor_path = node.path + [n]
                 neighbor = Node(n, neighbor_path)
                 new_g = g + 1
-                h_new = new_g + abs(n.row - end.row) + abs(n.col - end.col)
+                h_new = new_g + heuristic(n)
                 q.put((h_new, new_g, count, neighbor))
         draw()
 
