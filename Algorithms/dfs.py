@@ -14,16 +14,14 @@ def dfs(draw, grid, start, end):
 
     while stack:
         current_node = stack.pop()
-        expanded_nodes += 1  # كل Node بنطلعه من الـ stack يعتبر Expanded Node
-
         current_cell = current_node.cell
 
         if current_cell in visited:
             continue
 
         visited.add(current_cell)
+        expanded_nodes += 1 
 
-        # الرسم زي ما هو
         if current_cell != start and current_cell != end:
             current_cell.make_visited()
 
