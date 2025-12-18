@@ -54,10 +54,7 @@ def a_star(draw, grid, start, end):
             
             if neighbor_pos not in visited:  
                 visited.add(neighbor_pos)
-                
-                if n != start and n != end:
-                    n.make_visited()
-                
+              
                 count += 1
                 neighbor_path = node.path + [n]
                 neighbor = Node(n, neighbor_path)
