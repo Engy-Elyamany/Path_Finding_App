@@ -23,10 +23,10 @@ class Visualizer:
         self.canvas.bind("<B1-Motion>", self.left_drag)
         self.canvas.bind("<Button-3>", self.right_click)
         self.root.bind("<space>", self.start_astar)  
-        self.root.bind("b", self.start_bfs)          
-        self.root.bind("d", self.start_dfs)          
-        self.root.bind("c", self.clear_grid)
-        self.root.bind("v", self.show_comparison_plot)
+        self.root.bind("<b>", self.start_bfs)          
+        self.root.bind("<d>", self.start_dfs)          
+        self.root.bind("<c>", self.clear_grid)
+        self.root.bind("<v>", self.show_comparison_plot)
 
     def draw_grid(self):
         self.canvas.delete("all")
